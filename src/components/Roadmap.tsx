@@ -35,7 +35,7 @@ export default function Roadmap() {
              Execution <span className="text-[var(--cyan)] italic">Engine</span>
           </motion.h2>
           <motion.p variants={itemAnim} className="text-[var(--text-muted)] text-xl mb-8 max-w-[700px] font-light leading-relaxed">
-            A deterministic, phase-by-phase execution path transitioning from foundational syntax to apex capital allocation over a 10-year horizon.
+            A deterministic, phase-by-phase execution path transitioning from foundational syntax to apex capital allocation over a 6-year horizon.
           </motion.p>
         </motion.div>
 

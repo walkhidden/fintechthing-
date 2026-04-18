@@ -153,40 +153,76 @@ function Navbar({ theme, toggleTheme }: { theme: string; toggleTheme: () => void
 
 function Hero() {
   return (
-    <header className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 pb-12 px-6 border-b border-[var(--border)]">
+    <header className="min-h-screen flex items-center justify-center relative overflow-hidden pt-32 pb-12 px-6 border-b border-[var(--border)]">
       <div className="absolute inset-0 z-0 bg-grid-pattern opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"></div>
       
       {/* Abstract blur elements */}
       <div className="absolute top-1/4 -left-[10%] w-[40vw] h-[40vw] bg-[var(--cyan)] rounded-full mix-blend-screen filter blur-[120px] opacity-10 animate-pulse"></div>
       <div className="absolute -bottom-1/4 -right-[10%] w-[50vw] h-[50vw] bg-[var(--gold)] rounded-full mix-blend-screen filter blur-[150px] opacity-10 animate-pulse" style={{ animationDelay: '2s' }}></div>
       
-      <div className="relative z-10 w-full max-w-[1300px] flex flex-col items-center text-center">
+      <div className="relative z-10 w-full max-w-[1300px] flex flex-col xl:flex-row items-center gap-12 xl:gap-8 justify-between">
+        {/* Left Column: Hero Text */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col items-center"
+          className="flex-1 flex flex-col items-center xl:items-start text-center xl:text-left min-w-[50%]"
         >
-          <div className="font-mono text-[10px] md:text-xs uppercase tracking-[0.2em] text-[var(--gold)] flex items-center gap-4 mb-8">
+          <div className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-[var(--gold)] flex items-center gap-4 mb-8">
             <span className="w-8 md:w-12 h-px bg-[var(--gold)] shadow-[0_0_10px_var(--gold)]"></span> 
-            <span>FinTech Atlas & Playbook</span>
-            <span className="w-8 md:w-12 h-px bg-[var(--gold)] shadow-[0_0_10px_var(--gold)]"></span>
+            <span>FinTech & Playbook</span>
+            <span className="w-8 md:w-12 h-px bg-[var(--gold)] shadow-[0_0_10px_var(--gold)] xl:hidden"></span>
           </div>
           
           <h1 className="title-text font-serif mb-8 text-[var(--text-main)] w-full">
-            Where <span className="font-display text-[var(--cyan)] italic">Code</span> <br className="hidden md:block" />
+            Where <span className="font-display text-[var(--cyan)] italic">Code</span> <br className="hidden xl:block" />
             Meets <span className="text-[var(--gold)]">Capital.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-[var(--text-muted)] mb-12 max-w-[700px] leading-relaxed font-light">
+          <p className="text-lg md:text-xl text-[var(--text-muted)] mb-12 max-w-[600px] leading-relaxed font-light">
             Modern financial systems explained through technology, architecture, and real-world tools. Break into high-level global finance.
           </p>
           
-          <div className="flex gap-4 md:gap-6 flex-wrap justify-center">
+          <div className="flex gap-4 md:gap-6 flex-wrap justify-center xl:justify-start">
             <a href="#terminal" className="btn btn-cyan flex items-center gap-2 md:gap-3">
               <Hexagon size={16} /> Access Terminal
             </a>
             <a href="#ib" className="btn btn-out">View Theory</a>
+          </div>
+        </motion.div>
+
+        {/* Right Column: Niyaan's Career Map Card */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="w-full xl:w-[45%] max-w-[600px] glass p-8 md:p-10 border border-[var(--cyan)] border-opacity-30 rounded-[2rem] relative overflow-hidden shadow-[0_0_40px_rgba(14,211,207,0.05)] mx-auto xl:ml-auto"
+        >
+          <div className="absolute top-[-30px] right-[-10px] p-8 opacity-[0.04] pointer-events-none select-none">
+            <span className="font-serif text-[16rem] leading-none text-[var(--cyan)]">N</span>
+          </div>
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--cyan)] via-[var(--gold)] to-transparent opacity-50"></div>
+          
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse"></div>
+              <div className="font-mono text-[10px] text-[var(--gold)] uppercase tracking-widest">Master Architecture</div>
+            </div>
+            <h3 className="font-serif text-3xl md:text-4xl mb-5 text-[var(--text-main)]">Niyaan's Career Map</h3>
+            <p className="text-[var(--text-muted)] text-sm md:text-base mb-8 font-light leading-relaxed">
+              A deterministic, 6-year execution path transitioning from foundational academia (HR College) to apex capital allocation, mastering the intersection of FinTech, Private Equity, and Investment Banking.
+            </p>
+            <div className="flex flex-wrap gap-2">
+               <span className="font-mono text-[9px] px-3 py-1.5 bg-[var(--bg-elev)] border border-[var(--border)] rounded-full text-[var(--text-main)] uppercase tracking-widest shadow-sm hover:border-[var(--cyan)] transition-colors cursor-default">Target: HR College</span>
+               <span className="font-mono text-[9px] px-3 py-1.5 bg-[var(--bg-elev)] border border-[var(--border)] rounded-full text-[var(--text-main)] uppercase tracking-widest shadow-sm hover:border-[var(--gold)] transition-colors cursor-default">IB + FinTech Fusion</span>
+               <span className="font-mono text-[9px] px-3 py-1.5 bg-[var(--bg-elev)] border border-[var(--border)] rounded-full text-[var(--text-main)] uppercase tracking-widest shadow-sm hover:border-[var(--cyan)] transition-colors cursor-default">Parallel Ventures</span>
+            </div>
+            
+            <div className="mt-8 pt-6 border-t border-[var(--border)] border-dashed border-opacity-50">
+              <a href="#roadmap" className="font-mono text-[10px] text-[var(--cyan)] uppercase tracking-widest flex items-center gap-2 hover:text-[var(--gold)] transition-colors w-fit">
+                Initialize Path <span>&gt;</span>
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>
